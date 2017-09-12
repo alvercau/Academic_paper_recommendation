@@ -2,7 +2,7 @@
 
 Content-based recommendation
 
-## Data scraping
+## [Data scraping](https://github.com/alvercau/Academic_paper_recommendation/blob/master/Scraping.ipynb)
 
 The structure of Lingbuzz is not consistent, which makes scraping harder:
  * depending on where the pdf is stored (in the db of the website itself, in semantics archive or in Rutgers Uni db), the link is in another place. If it 
@@ -13,7 +13,7 @@ The structure of Lingbuzz is not consistent, which makes scraping harder:
  Workaround: find only hrefs within <center><\center>. The first one is title, the others are authors. Other hrefs on the page are irrelevant if url to pdf is extracted from article list.
 
 
-## Conversion
+## [Conversion](https://github.com/alvercau/Academic_paper_recommendation/blob/master/notebooks/Converting_pdf_to_txt.ipynb)
 
 The papers are downloaded as pdfs. They were converted to plain text for further processing, and stored in a MongoDB. Each document in the DB has the following fields:
 * author(s)
@@ -22,9 +22,9 @@ The papers are downloaded as pdfs. They were converted to plain text for further
 * publication information
 * url (maintained in order to match converted pdfs with doc)
 
-## The linguistified tokenizer
+## [The linguistified tokenizer](https://github.com/alvercau/Academic_paper_recommendation/blob/master/notebooks/Preparation.ipynb)
 
-Removes all irrelavant information from the papers. The idea is to obtain pure linguistics, with as little noise as possible.
+Removes all [irrelavant information](https://github.com/alvercau/Academic_paper_recommendation/blob/master/notebooks/EDA.ipynb) from the papers. The idea is to obtain pure linguistics, with as little noise as possible.
 
 * tokenize with Spacy tokenizer
 * lemmatize
@@ -49,7 +49,7 @@ What could be better:
 Countvectors and tfidf vectors were made for both the papers and the keywords. Presumably, keywords summarize the topics of the papers. This is usefull for evaluation of topic models: the distance between the topic vectors of two papers should be reflected by the distance between the keyword vectors.
 
 
-## Topic modeling
+## [Topic](https://github.com/alvercau/Academic_paper_recommendation/blob/master/notebooks/Topic_modelling.ipynb) [modeling](https://github.com/alvercau/Academic_paper_recommendation/blob/master/notebooks/modeling_final.ipynb)
 
 Iterative desing: 
 * make topic models
@@ -62,12 +62,12 @@ DBSCAN revealed to be very useful to detect the noise in the topic model, as it 
 Final choice:
 NMF on NMF: assigning all papers to four different general topics (presumably syntax, semantics, morphology and phonology, the four topics under which the papers are classified on Lingbuzz). Then assign all papers in each general topic to a more specific topic.
 
-## Recommender
+## [Recommender](https://github.com/alvercau/Academic_paper_recommendation/blob/master/notebooks/Recommender.ipynb)
 
 Paper recommendation based on weighted combination of topics similarity, document similarity and keyword similarity. The best weights found were:
 2 * topic + 1 * document + 3 * keywords
 
-## Visualization:
+## [Visualization](https://github.com/alvercau/Academic_paper_recommendation/tree/master/visualisations)
 
 * Zoomable circle packing which represent the relations between the topics and the most relevant words for each topic.
 * Dropdown menu where you can select a paper and you get three recommended papers based on the similarity with the chosen paper.
