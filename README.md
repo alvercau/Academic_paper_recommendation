@@ -12,7 +12,7 @@ Open source linguistic research articles available on [Lingbuzz](https://ling.au
 
 ### Design
 * Scraping the data. Most papers are in pdf format, which will require [transformation](https://pythontips.com/2016/02/25/ocr-on-pdf-files-using-python/) to a computer-readable format. Between 500 and 1000 papers will be used.
-* Topic modeling: [vectorizing](https://github.com/facebookresearch/fastText) the texts to be able to classify them according 
+* Topic modeling: vectorizing the texts to be able to classify them according 
 to topic. Preferrably, identification of several topics per paper. Each paper corresponds to one document.
 * Document similarity: calculate distance between different documents. 
 * Threshold: decide on a similarity threshold to recommend sufficiently distinct papers.
